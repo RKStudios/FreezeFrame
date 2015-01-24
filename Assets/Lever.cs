@@ -3,19 +3,67 @@ using System.Collections;
 
 public class Lever : MonoBehaviour {
 
+	public bool doorTrigger = false;
+	public Player playerObject;
+	public float time;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
-	void OnTriggerEnter(Collider other) 
+ 
+	void OnCollisionEnter2D(Collision2D other)
 	{
-/*		if (other.tag == "Player")
-		{
-			return;
+
+		if (doorTrigger == false){
+			doorTrigger = true;
+
+			if (other.transform.tag == "Player" && playerObject.horizontalMovement < 0  ) {
+
+				transform.Rotate(new Vector3(0,0,60)  );
+				//gameObject.collider.enabled = false;
+
+				//transform.Rotate(new Vector3(0,0,-60) );
+				//gameObject.collider.enabled = true;
+
+			}
+			else if (other.transform.tag == "Player" && playerObject.horizontalMovement > 0 ){
+					
+				transform.Rotate(new Vector3(0,0,-60));
+				//gameObject.collider.enabled = false;
+
+				//transform.Rotate(new Vector3(0,0,60)  );
+				//gameObject.collider.enabled = true;
+			}
+		}
+/*
+		else if (doorTrigger == true){
+			doorTrigger = false;
+
+			if (other.transform.tag == "Player" && playerObject.horizontalMovement < 0  ) {
+				
+				transform.Rotate(new Vector3(0,0,60)  );
+				gameObject.collider.enabled = false;
+
+				//transform.Rotate(new Vector3(0,0,-60) );
+				//gameObject.collider.enabled = true;
+			}
+			else if (other.transform.tag == "Player" && playerObject.horizontalMovement > 0 ){
+				
+				transform.Rotate(new Vector3(0,0,-60));
+				gameObject.collider.enabled = false;
+
+				//transform.Rotate(new Vector3(0,0,60)  );
+				//gameObject.collider.enabled = true;
+			}
 		}
 */
-		transform.Rotate(new Vector3(0,0,150) /* * Time.deltaTime */);
-
+		return;
 	}
+
+	void Update(){
+		time += Time.deltaTime;
+	}
+
+
 }

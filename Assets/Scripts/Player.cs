@@ -8,8 +8,8 @@ public class Player : MonoBehaviour {
 
 	int speed = 10;
 	int jumpSpeed = 8;
-	float horizontalMovement = 0;
-	float verticalMovement = 0;
+	public float horizontalMovement = 0;
+	public float verticalMovement = 0;
 	bool canJump = false;
 	bool wasVerticalSpeedZero = false;
 
