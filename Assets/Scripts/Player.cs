@@ -60,6 +60,11 @@ public class Player : MonoBehaviour {
 			wasVerticalSpeedZero = false;
 		}
 
+		if(Input.GetButton("FreezeFrame"))
+		{
+			FreezeFrame();
+		}
+
 		rigidbody2D.velocity = new Vector2(horizontalMovement * speed, verticalMovement);
 
 	}
@@ -83,6 +88,11 @@ public class Player : MonoBehaviour {
 	void Stretch()
 	{	//ambiguous error here
 		//transform.localScale += new Vector2(0.1F, 0);
+	}
+
+	void FreezeFrame()
+	{
+
 	}
 
 	void Die() {
