@@ -52,9 +52,9 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log ("ON COLLISION " + other.gameObject.name);
+		Debug.Log ("ON COLLISION " + other.gameObject.name + "   " + other.gameObject.tag);
 		if (other.transform.tag == "Trap") {
-			Instantiate (deathParticles);
+			Instantiate (deathParticles, transform.position, Quaternion.identity);
 			transform.position = spawn;
 		}
 	}
