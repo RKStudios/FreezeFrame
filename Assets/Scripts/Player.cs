@@ -7,8 +7,8 @@ public class Player : MonoBehaviour {
 	public GameObject frozenPlayer;
 	private Vector2 spawn;
 
-	int speed = 10;
-	int jumpSpeed = 8;
+	public int speed = 10;
+	public int jumpSpeed = 24;
 	public float horizontalMovement = 0;
 	public float verticalMovement = 0;
 	bool canJump = false;
