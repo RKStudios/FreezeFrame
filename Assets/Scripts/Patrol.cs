@@ -20,6 +20,7 @@ public class Patrol : MonoBehaviour {
 		if (currentPoint >= patrolPoints.Length) {
 			currentPoint = 0;
 		}
+		Debug.Log (transform.position + "    " + currentPoint + "    " + moveSpeed + "    " + Time.deltaTime + "     " + moveSpeed * Time.deltaTime);
 		transform.position = Vector3.MoveTowards (transform.position, patrolPoints [currentPoint].position, moveSpeed * Time.deltaTime);
 	}
 }
