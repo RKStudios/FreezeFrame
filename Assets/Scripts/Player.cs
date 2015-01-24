@@ -93,13 +93,22 @@ public class Player : MonoBehaviour {
 
 	void FreezeFrame()
 	{
-		Vector3 positionToSpawn = transform.position;
-		transform.position = spawn;
-		Instantiate(frozenPlayer, positionToSpawn, Quaternion.Euler(0, 0, 0));
+		GameObject[] frozenPlayers = GameObject.FindGameObjectsWithTag ("FrozenPlayer");
+		if(frozenPlayers.Length < 5)
+		{
+			Vector3 positionToSpawn = transform.position;
+			transform.position = spawn;
+			Instantiate(frozenPlayer, positionToSpawn, Quaternion.Euler(0, 0, 0));
+		}
 	}
 
 	void Die() {
 		Instantiate (deathParticles, transform.position, Quaternion.Euler (270, 0, 0));
 		transform.position = spawn;
+		GameObject[] frozenPlayers = GameObject.FindGameObjectsWithTag ("FrozenPlayer");
+		for(int i = 0; i < frozenPlayers.Length; ++i)
+		{
+			frozenPlayers[i].GetComponent<FrozenPlayer>().Die();
+		}
 	}
 }
