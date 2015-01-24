@@ -52,6 +52,7 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
+		Debug.Log ("ON COLLISION " + other.gameObject.name);
 		if (other.transform.tag == "Trap") {
 			Instantiate (deathParticles);
 			transform.position = spawn;
