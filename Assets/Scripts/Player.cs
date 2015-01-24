@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	public GameObject deathParticles;
+	private Vector2 spawn;
+
 	int speed = 10;
 	int jumpSpeed = 8;
 	float horizontalMovement = 0;
@@ -13,7 +16,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-	
+		spawn = transform.position;
 	}
 
 	void FixedUpdate()
@@ -45,6 +48,15 @@ public class Player : MonoBehaviour {
 	void Update() 
 	{
 
+	}
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		Debug.Log ("ON COLLISION " + other.gameObject.name);
+		if (other.transform.tag == "Trap") {
+			Instantiate (deathParticles);
+			transform.position = spawn;
+		}
 	}
 
 	//stretching????
