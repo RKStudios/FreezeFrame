@@ -40,4 +40,10 @@ public class Player : MonoBehaviour {
 	{
 
 	}
+
+	//stretching????
+	void Stretch()
+	{	//ambiguous error here
+		//transform.localScale += new Vector2(0.1F, 0);
+	}
 }
