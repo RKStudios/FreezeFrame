@@ -4,6 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public GameObject deathParticles;
+	public GameObject frozenPlayer;
 	private Vector2 spawn;
 
 	int speed = 10;
@@ -60,7 +61,7 @@ public class Player : MonoBehaviour {
 			wasVerticalSpeedZero = false;
 		}
 
-		if(Input.GetButton("FreezeFrame"))
+		if(Input.GetButtonDown("FreezeFrame"))
 		{
 			FreezeFrame();
 		}
@@ -92,7 +93,9 @@ public class Player : MonoBehaviour {
 
 	void FreezeFrame()
 	{
-
+		Vector3 positionToSpawn = transform.position;
+		transform.position = spawn;
+		Instantiate(frozenPlayer, positionToSpawn, Quaternion.Euler(0, 0, 0));
 	}
 
 	void Die() {
