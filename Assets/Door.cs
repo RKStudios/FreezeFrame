@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Door : MonoBehaviour {
 
+
 	public Lever leverObject;
 
 	// Use this for initialization
@@ -17,9 +18,9 @@ public class Door : MonoBehaviour {
 		{
 			return;
 		}
-		else if(leverObject.doorTrigger == true)
+		else if(leverObject.doorTrigger == true){
 		
-			transform.position = new Vector3( 0, -15, 0);
+			transform.position = transform.position - new Vector3( 0, 5, 0);
 		}
 	}
 }

@@ -4,6 +4,8 @@ using System.Collections;
 public class Lever : MonoBehaviour {
 
 	public bool doorTrigger = false;
+	bool rotateRight = false;
+	bool rotateLeft = false;
 	public Player playerObject;
 	public float time;
 
@@ -15,12 +17,12 @@ public class Lever : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
 	{
 
-		if (doorTrigger == false){
+//		if (doorTrigger == false){
 			doorTrigger = true;
 
 			if (other.transform.tag == "Player" && playerObject.horizontalMovement < 0  ) {
+				rotateRight = true;
 
-				transform.Rotate(new Vector3(0,0,60)  );
 				//gameObject.collider.enabled = false;
 
 				//transform.Rotate(new Vector3(0,0,-60) );
@@ -28,14 +30,14 @@ public class Lever : MonoBehaviour {
 
 			}
 			else if (other.transform.tag == "Player" && playerObject.horizontalMovement > 0 ){
-					
-				transform.Rotate(new Vector3(0,0,-60));
+				rotateLeft = true;
+
 				//gameObject.collider.enabled = false;
 
 				//transform.Rotate(new Vector3(0,0,60)  );
 				//gameObject.collider.enabled = true;
 			}
-		}
+//		}
 /*
 		else if (doorTrigger == true){
 			doorTrigger = false;
@@ -62,7 +64,28 @@ public class Lever : MonoBehaviour {
 	}
 
 	void Update(){
-		time += Time.deltaTime;
+
+		if (rotateRight == true){
+			transform.Rotate(new Vector3(0,0,60)  );
+			//gameObject.collider.enabled = false;
+			
+			//transform.Rotate(new Vector3(0,0,-60) );
+			//gameObject.collider.enabled = true;
+			return;
+			
+		}
+
+		if (rotateLeft == true){
+			return;
+			transform.Rotate(new Vector3(0,0,-60));
+			//gameObject.collider.enabled = false;
+			
+			//transform.Rotate(new Vector3(0,0,60)  );
+			//gameObject.collider.enabled = true;
+			return;
+		}
+
+		return;
 	}
 
 
