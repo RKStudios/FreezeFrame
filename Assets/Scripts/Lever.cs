@@ -64,6 +64,7 @@ public class Lever : MonoBehaviour {
 	}
 
 	void Update(){
+		time += Time.deltaTime;
 
 		if (rotateRight == true){
 			transform.Rotate(new Vector3(0,0,60)  );
