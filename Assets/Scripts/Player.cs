@@ -19,6 +19,26 @@ public class Player : MonoBehaviour {
 		spawn = transform.position;
 	}
 
+	public bool GetCanJump()
+	{
+		return canJump;
+	}
+
+	public void SetCanJump(bool value)
+	{
+		canJump = value;
+	}
+
+	public bool GetWasVerticalSpeedZero()
+	{
+		return wasVerticalSpeedZero;
+	}
+	
+	public void SetWasVerticalSpeedZero(bool value)
+	{
+		wasVerticalSpeedZero = value;
+	}
+
 	void FixedUpdate()
 	{
 		horizontalMovement = Input.GetAxis("Horizontal");
