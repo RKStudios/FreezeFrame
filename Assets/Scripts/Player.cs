@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	int speed = 1000;
-	int jumpPower = 500;
+	int speed = 10;
+	int jumpSpeed = 8;
 	float horizontalMovement = 0;
-	bool isPlayerMoving = false;
+	float verticalMovement = 0;
+	bool canJump = false;
+	bool wasVerticalSpeedZero = false;
 
 	// Use this for initialization
 	void Start()
@@ -16,22 +18,26 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-		{
-			isPlayerMoving = true;
-		}
-
 		horizontalMovement = Input.GetAxis("Horizontal");
+		verticalMovement = rigidbody2D.velocity.y;
 
-		Debug.Log(horizontalMovement);
-		
-		if(Input.GetKeyDown(KeyCode.Space))
+		if(verticalMovement == 0 && !wasVerticalSpeedZero)
 		{
-			rigidbody2D.AddForce(Vector2.up * jumpPower);
+			wasVerticalSpeedZero = true;
+		}
+		else if(verticalMovement == 0 && wasVerticalSpeedZero)
+		{
+			canJump = true;
 		}
 
-		rigidbody2D.AddForce(Vector2.right * horizontalMovement * Time.deltaTime * speed);
+		if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && canJump)
+		{
+			verticalMovement = jumpSpeed;
+			canJump = false;
+			wasVerticalSpeedZero = false;
+		}
+
+		rigidbody2D.velocity = new Vector2(horizontalMovement * speed, verticalMovement);
 
 	}
 
