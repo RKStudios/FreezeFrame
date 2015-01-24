@@ -64,29 +64,25 @@ public class Lever : MonoBehaviour {
 	}
 
 	void Update(){
-		time += Time.deltaTime;
+
 
 		if (rotateRight == true){
-			transform.Rotate(new Vector3(0,0,60)  );
-			//gameObject.collider.enabled = false;
-			
-			//transform.Rotate(new Vector3(0,0,-60) );
-			//gameObject.collider.enabled = true;
-			return;
-			
+			transform.Rotate(new Vector3(0,0,15)  );
+			if (transform.eulerAngles == new Vector3(0,0,60)){
+				rotateRight = false;
+			}
 		}
 
 		if (rotateLeft == true){
-			return;
-			transform.Rotate(new Vector3(0,0,-60));
-			//gameObject.collider.enabled = false;
-			
-			//transform.Rotate(new Vector3(0,0,60)  );
-			//gameObject.collider.enabled = true;
-			return;
+
+			transform.Rotate(new Vector3(0,0,-15));
+				if (transform.eulerAngles == new Vector3(0,0,-60)){
+				rotateLeft = false;
+			}	
 		}
 
-		return;
+
+	
 	}
 
 
