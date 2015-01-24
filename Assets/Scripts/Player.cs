@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	private Vector2 spawn;
 
 	public int speed = 10;
-	public int jumpSpeed = 24;
+	public int jumpSpeed = 15;
 	public float horizontalMovement = 0;
 	public float verticalMovement = 0;
 	bool canJump = false;
