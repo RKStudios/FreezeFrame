@@ -67,15 +67,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update() 
 	{
-
+		if (transform.position.y < -5) {
+			Die ();
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Debug.Log ("ON COLLISION " + other.gameObject.name + "   " + other.gameObject.tag);
 		if (other.transform.tag == "Trap") {
-			Instantiate (deathParticles, transform.position, Quaternion.identity);
-			transform.position = spawn;
+			Die ();		
 		}
 	}
 
@@ -83,5 +83,10 @@ public class Player : MonoBehaviour {
 	void Stretch()
 	{	//ambiguous error here
 		//transform.localScale += new Vector2(0.1F, 0);
+	}
+
+	void Die() {
+		Instantiate (deathParticles, transform.position, Quaternion.Euler (270, 0, 0));
+		transform.position = spawn;
 	}
 }
