@@ -2,17 +2,32 @@
 using System.Collections;
 
 public class Rotate : MonoBehaviour {
+	public bool isRotatingRight = false;
 
 	// Use this for initialization
 	void Start () {
-		//Bounds bounds;
+
 
 	}
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
 	
+		if (other.transform.tag == "Gear" ) {
+			isRotatingRight = true;
+		}
+
+		
+	}
 	// Update is called once per frame
 	void Update () {
-		//transform.RotateAround(Collider.bounds.center, Vector3.forward, 20 * Time.deltaTime
-		//Debug.Log ("TRYING TO UPDATE");
-		transform.Rotate(new Vector3(0,0,30) * Time.deltaTime);
+
+		if (isRotatingRight == false){
+			transform.Rotate(new Vector3(0,0,30) * Time.deltaTime);
+		}
+		else if (isRotatingRight == true){
+			transform.Rotate(new Vector3(0,0,-30) * Time.deltaTime);
+		}
+
 	}
 }

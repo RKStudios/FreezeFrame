@@ -70,6 +70,7 @@ public class Lever : MonoBehaviour {
 			transform.Rotate(new Vector3(0,0,15)  );
 			if (transform.eulerAngles == new Vector3(0,0,60)){
 				rotateRight = false;
+
 			}
 		}
 
@@ -78,6 +79,7 @@ public class Lever : MonoBehaviour {
 			transform.Rotate(new Vector3(0,0,-15));
 				if (transform.eulerAngles == new Vector3(0,0,-60)){
 				rotateLeft = false;
+	
 			}	
 		}
 
