@@ -10,23 +10,14 @@ public class Rotate : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter2D(Collision2D other)
-	{
-	
-		if (other.transform.tag == "Gear" ) {
-			isRotatingRight = true;
-		}
-
-		
-	}
 	// Update is called once per frame
 	void Update () {
 
 		if (isRotatingRight == false){
-			transform.Rotate(new Vector3(0,0,30) * Time.deltaTime);
+			transform.Rotate(new Vector3(0,0,25) * Time.deltaTime);
 		}
 		else if (isRotatingRight == true){
-			transform.Rotate(new Vector3(0,0,-30) * Time.deltaTime);
+			transform.Rotate(new Vector3(0,0,-25) * Time.deltaTime);
 		}
 
 	}
