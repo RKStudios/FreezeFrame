@@ -76,10 +76,6 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update() 
 	{
-<<<<<<< HEAD
-		if (transform.position.y < -50) {
-=======
-
 		if(Input.GetButtonDown("FreezeFrame"))
 		{
 			FreezeFrame();
@@ -90,8 +86,7 @@ public class Player : MonoBehaviour {
 			shouldJump = true;
 		}
 
-		if (transform.position.y < -30) {
->>>>>>> origin/master
+		if (transform.position.y < -50) {
 			Die ();
 		}
 	}
