@@ -17,7 +17,7 @@ public class Lever : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
 	{
 
-//		if (doorTrigger == false){
+		if (doorTrigger == false){
 			doorTrigger = true;
 
 			if (other.transform.tag == "Player" && playerObject.horizontalMovement < 0  ) {
@@ -37,7 +37,7 @@ public class Lever : MonoBehaviour {
 				//transform.Rotate(new Vector3(0,0,60)  );
 				//gameObject.collider.enabled = true;
 			}
-//		}
+		}
 /*
 		else if (doorTrigger == true){
 			doorTrigger = false;

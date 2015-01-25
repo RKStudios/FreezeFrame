@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Door : MonoBehaviour {
-
+	public int fallSpeed = 5;
 
 	public Lever leverObject;
 
@@ -16,8 +16,8 @@ public class Door : MonoBehaviour {
 	{
 		if(leverObject.doorTrigger == true){ 
 		
-			transform.position = transform.position - new Vector3( 0, 5, 0);
-			if (transform.position == new Vector3(0, 5, 0)){
+			transform.position = transform.position - new Vector3( 0, fallSpeed, 0);
+			if (transform.position == new Vector3(0, fallSpeed, 0)){
 				leverObject.doorTrigger = false;
 			}
 		}
