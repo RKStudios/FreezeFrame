@@ -8,6 +8,6 @@ public class FrozenPlayer : MonoBehaviour {
 	public void Die()
 	{
 		Instantiate (deathParticles, transform.position, Quaternion.Euler (270, 0, 0));
-		Destroy(this.gameObject);
+		Destroy (this.gameObject);
 	}
 }

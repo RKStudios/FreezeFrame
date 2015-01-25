@@ -32,7 +32,6 @@ public class Player : MonoBehaviour {
 
 	public void SetCanJump(bool value)
 	{
-		Debug.Log("SETTING JUMP TO " + value);
 		canJump = value;
 	}
 
@@ -127,15 +126,16 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void Die() {
+	void Die()
+	{
 		Instantiate (deathParticles, transform.position, Quaternion.Euler (270, 0, 0));
 		transform.position = spawn;
+		
 		for(int i = 0; i < frozenPlayers.Count; ++i)
 		{
 			frozenPlayers[i].GetComponent<FrozenPlayer>().Die();
-			frozenPlayers.RemoveAt(i);
 		}
-
+		frozenPlayers.Clear();
 	}
 
 	public void SetCheckpoint(Vector2 position)
