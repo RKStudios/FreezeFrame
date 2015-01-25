@@ -133,9 +133,8 @@ public class Player : MonoBehaviour {
 		for(int i = 0; i < frozenPlayers.Count; ++i)
 		{
 			frozenPlayers[i].GetComponent<FrozenPlayer>().Die();
-
+			frozenPlayers.RemoveAt(i);
 		}
-		frozenPlayers.RemoveRange(0, 4);
 
 	}
 }
