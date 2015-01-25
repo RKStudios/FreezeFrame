@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 		if(shouldJump)
 		{
 			verticalMovement = jumpSpeed;
-			canJump = false;
+			SetCanJump(false);
 			wasVerticalSpeedZero = false;
 			shouldJump = false;
 		}
