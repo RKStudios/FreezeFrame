@@ -64,6 +64,11 @@ public class Player : MonoBehaviour {
 			shouldJump = false;
 		}
 
+		if (Input.GetKeyDown (KeyCode.R))
+		{
+			Application.LoadLevel(Application.loadedLevel);
+		}
+
 		rigidbody2D.velocity = new Vector2(horizontalMovement * speed, verticalMovement);
 
 	}
@@ -96,7 +101,7 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col)
 	{
-		if (col.transform.tag == "Checkpoint" && col.transform.particleSystem.startColor == Color.red)
+		if (col.transform.tag == "Checkpoint" && col.transform.particleSystem.startColor == new Color(1, 0, 0))
 		{
 			spawn = col.transform.position;
 		}
@@ -131,10 +136,11 @@ public class Player : MonoBehaviour {
 	void Die() {
 		Instantiate (deathParticles, transform.position, Quaternion.Euler (270, 0, 0));
 		transform.position = spawn;
-		GameObject[] frozenPlayers = GameObject.FindGameObjectsWithTag ("FrozenPlayer");
-		for(int i = 0; i < frozenPlayers.Length; ++i)
+		for(int i = 0; i < frozenPlayers.Count; ++i)
 		{
 			frozenPlayers[i].GetComponent<FrozenPlayer>().Die();
+			frozenPlayers.RemoveAt(i);
 		}
+
 	}
 }
