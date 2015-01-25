@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
 	public GameObject deathParticles;
 	public GameObject frozenPlayer;
 	private Vector2 spawn;
+	List<GameObject> frozenPlayers;
 
 	public int speed = 10;
 	public int jumpSpeed = 15;
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour {
 	void Start()
 	{
 		spawn = transform.position;
+		frozenPlayers = new List<GameObject>(5);
 	}
 
 	public bool GetCanJump()
@@ -101,12 +104,21 @@ public class Player : MonoBehaviour {
 
 	void FreezeFrame()
 	{
-		GameObject[] frozenPlayers = GameObject.FindGameObjectsWithTag ("FrozenPlayer");
-		if(frozenPlayers.Length < 5)
+		if(frozenPlayers.Count < 5)
 		{
 			Vector3 positionToSpawn = transform.position;
 			transform.position = spawn;
-			Instantiate(frozenPlayer, positionToSpawn, Quaternion.Euler(0, 0, 0));
+			GameObject frozenPlayerGO = Instantiate(frozenPlayer, positionToSpawn, Quaternion.Euler(0, 0, 0)) as GameObject;
+			frozenPlayers.Add(frozenPlayerGO);
+		}
+		else
+		{
+			frozenPlayers[0].GetComponent<FrozenPlayer>().Die();
+			frozenPlayers.RemoveAt(0);
+			Vector3 positionToSpawn = transform.position;
+			transform.position = spawn;
+			GameObject frozenPlayerGO = Instantiate(frozenPlayer, positionToSpawn, Quaternion.Euler(0, 0, 0)) as GameObject;
+			frozenPlayers.Add(frozenPlayerGO);
 		}
 	}
 
