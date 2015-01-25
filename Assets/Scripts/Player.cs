@@ -89,6 +89,10 @@ public class Player : MonoBehaviour {
 		{
 			Die ();
 		}
+
+		if (Input.GetKey (KeyCode.Escape)) {
+			Application.Quit();
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
