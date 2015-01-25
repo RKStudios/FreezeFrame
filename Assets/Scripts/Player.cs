@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
 	public GameObject frozenPlayer;
 	private Vector2 spawn;
 	List<GameObject> frozenPlayers;
+	public BoxCollider2D jumpColliders;
+	bool shouldJump = false;
 
 	public int speed = 10;
 	public int jumpSpeed = 15;
@@ -30,7 +32,13 @@ public class Player : MonoBehaviour {
 
 	public void SetCanJump(bool value)
 	{
+		Debug.Log("SETTING JUMP TO " + value);
 		canJump = value;
+	}
+
+	public bool CanJump()
+	{
+		return false;
 	}
 
 	public bool GetWasVerticalSpeedZero()
@@ -48,25 +56,12 @@ public class Player : MonoBehaviour {
 		horizontalMovement = Input.GetAxis("Horizontal");
 		verticalMovement = rigidbody2D.velocity.y;
 
-		if(verticalMovement == 0 && !wasVerticalSpeedZero)
-		{
-			wasVerticalSpeedZero = true;
-		}
-		else if(verticalMovement == 0 && wasVerticalSpeedZero)
-		{
-			canJump = true;
-		}
-
-		if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && canJump)
+		if(shouldJump)
 		{
 			verticalMovement = jumpSpeed;
 			canJump = false;
 			wasVerticalSpeedZero = false;
-		}
-
-		if(Input.GetButtonDown("FreezeFrame"))
-		{
-			FreezeFrame();
+			shouldJump = false;
 		}
 
 		rigidbody2D.velocity = new Vector2(horizontalMovement * speed, verticalMovement);
@@ -76,6 +71,17 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update() 
 	{
+
+		if(Input.GetButtonDown("FreezeFrame"))
+		{
+			FreezeFrame();
+		}
+
+		if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow)) && canJump)
+		{
+			shouldJump = true;
+		}
+
 		if (transform.position.y < -30) {
 			Die ();
 		}
