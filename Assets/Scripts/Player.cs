@@ -87,7 +87,10 @@ public class Player : MonoBehaviour {
 		}
 
 		if (transform.position.y < -50) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 			Die ();
 		}
 	}
