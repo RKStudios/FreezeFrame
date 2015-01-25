@@ -73,7 +73,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update() 
 	{
-		if (transform.position.y < -5) {
+		if (transform.position.y < -30) {
 			Die ();
 		}
 	}
