@@ -16,7 +16,7 @@ public class Switch : MonoBehaviour {
 			if(door != null)
 			{
 				door.GetComponent<BoxCollider2D>().enabled = false;
-				door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+				door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
 				LineRenderer line = door.AddComponent<LineRenderer>();
 				line.SetPosition(0, this.transform.position);
 				line.SetPosition(1, door.transform.position);
@@ -64,7 +64,7 @@ public class Switch : MonoBehaviour {
 				if(door != null)
 				{
 					door.GetComponent<BoxCollider2D>().enabled = false;
-					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
 				}
 			}
 		}
@@ -84,7 +84,7 @@ public class Switch : MonoBehaviour {
 				if(door != null)
 				{
 					door.GetComponent<BoxCollider2D>().enabled = false;
-					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
 				}
 			}
 			
