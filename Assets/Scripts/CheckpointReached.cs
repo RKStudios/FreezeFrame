@@ -8,6 +8,7 @@ public class CheckpointReached : MonoBehaviour
 		if (col.gameObject.tag == "Player")
 		{
 			gameObject.particleSystem.startColor = Color.green;
+			col.gameObject.GetComponent<Player>().SetCheckpoint(transform.position);
 		}
 	}
 }

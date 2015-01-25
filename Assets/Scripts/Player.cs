@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 		if(shouldJump)
 		{
 			verticalMovement = jumpSpeed;
-			canJump = false;
+			SetCanJump(false);
 			wasVerticalSpeedZero = false;
 			shouldJump = false;
 		}
@@ -86,7 +86,8 @@ public class Player : MonoBehaviour {
 			shouldJump = true;
 		}
 
-		if (transform.position.y < -50) {
+		if (transform.position.y < -50) 
+		{
 			Die ();
 		}
 	}
@@ -98,13 +99,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.transform.tag == "Checkpoint" && col.transform.particleSystem.startColor == new Color(1, 0, 0))
-		{
-			spawn = col.transform.position;
-		}
-	}
 
 	//stretching????
 	void Stretch()
@@ -141,5 +135,10 @@ public class Player : MonoBehaviour {
 			frozenPlayers.RemoveAt(i);
 		}
 
+	}
+
+	public void SetCheckpoint(Vector2 position)
+	{
+		spawn = position;
 	}
 }

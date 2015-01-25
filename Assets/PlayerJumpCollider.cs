@@ -25,6 +25,11 @@ public class PlayerJumpCollider : MonoBehaviour {
 			groundObjects.Add(other.gameObject);
 			player.SetCanJump(true);
 		}
+
+		if(other.gameObject.tag == "PlayerHolder")
+		{
+			player.gameObject.transform.parent = other.gameObject.transform;
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)
@@ -36,6 +41,13 @@ public class PlayerJumpCollider : MonoBehaviour {
 			{
 				player.SetCanJump(false);
 			}
+		}
+
+		Debug.Log (other.gameObject.tag);
+
+		if(other.gameObject.tag == "PlayerHolder")
+		{
+			player.gameObject.transform.parent = null;
 		}
 	}
 }
