@@ -14,7 +14,26 @@ public class Switch : MonoBehaviour {
 		foreach(GameObject door in reverseDoors)
 		{
 			if(door != null)
-				door.SetActive(false);
+			{
+				door.GetComponent<BoxCollider2D>().enabled = false;
+				door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+				LineRenderer line = door.AddComponent<LineRenderer>();
+				line.SetPosition(0, this.transform.position);
+				line.SetPosition(1, door.transform.position);
+				line.SetWidth(0.1f, 0.1f);
+
+			}
+		}
+
+		foreach(GameObject door in doors)
+		{
+			if(door != null)
+			{
+				LineRenderer line = door.AddComponent<LineRenderer>();
+				line.SetPosition(0, this.transform.position);
+				line.SetPosition(1, door.transform.position);
+				line.SetWidth(0.1f, 0.1f);
+			}
 		}
 	}
 	
@@ -25,7 +44,6 @@ public class Switch : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log (other.gameObject + "  " + other.gameObject.tag);
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "FrozenPlayer")
 		{
 			if(!playerObjects.Contains(other.gameObject))
@@ -35,20 +53,25 @@ public class Switch : MonoBehaviour {
 			foreach(GameObject door in reverseDoors)
 			{
 				if(door != null)
-					door.SetActive(true);
+				{
+					door.GetComponent<BoxCollider2D>().enabled = true;
+					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+				}
 			}
 
 			foreach(GameObject door in doors)
 			{
 				if(door != null)
-					door.SetActive(false);
+				{
+					door.GetComponent<BoxCollider2D>().enabled = false;
+					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+				}
 			}
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		Debug.Log (other.gameObject + "  " + other.gameObject.tag);
 		if(other.gameObject.tag == "Player" || other.gameObject.tag == "FrozenPlayer")
 		{
 			playerObjects.Remove(other.gameObject);
@@ -59,13 +82,19 @@ public class Switch : MonoBehaviour {
 			foreach(GameObject door in reverseDoors)
 			{
 				if(door != null)
-					door.SetActive(false);
+				{
+					door.GetComponent<BoxCollider2D>().enabled = false;
+					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+				}
 			}
 			
 			foreach(GameObject door in doors)
 			{
 				if(door != null)
-					door.SetActive(true);
+				{
+					door.GetComponent<BoxCollider2D>().enabled = true;
+					door.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+				}
 			}
 		}
 	}
