@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 public class Switch : MonoBehaviour {
 
-	public GameObject door;
 	List<GameObject> playerObjects;
-	public bool reverse;
+	public List<GameObject> doors;
+	public List<GameObject> reverseDoors;
 
 	// Use this for initialization
 	void Start () {
 		playerObjects = new List<GameObject>();
-		if(reverse)
+		foreach(GameObject door in reverseDoors)
 		{
 			door.SetActive(false);
 		}
@@ -31,13 +31,14 @@ public class Switch : MonoBehaviour {
 			{
 				playerObjects.Add(other.gameObject);
 			}
-			if(reverse)
+			foreach(GameObject door in reverseDoors)
 			{
-				door.gameObject.SetActive(true);
+				door.SetActive(true);
 			}
-			else
+
+			foreach(GameObject door in doors)
 			{
-				door.gameObject.SetActive(false);
+				door.SetActive(false);
 			}
 		}
 	}
@@ -52,13 +53,14 @@ public class Switch : MonoBehaviour {
 
 		if(playerObjects.Count == 0)
 		{
-			if(reverse)
+			foreach(GameObject door in reverseDoors)
 			{
-				door.gameObject.SetActive(false);
+				door.SetActive(false);
 			}
-			else
+			
+			foreach(GameObject door in doors)
 			{
-				door.gameObject.SetActive(true);
+				door.SetActive(true);
 			}
 		}
 	}
