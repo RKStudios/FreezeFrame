@@ -17,9 +17,11 @@ public class Door : MonoBehaviour {
 		if(leverObject.doorTrigger == true){ 
 		
 			transform.position = transform.position - new Vector3( 0, fallSpeed, 0);
+			/*
 			if (transform.position == new Vector3(0, fallSpeed, 0)){
-				leverObject.doorTrigger = false;
+				leverObject.doorTrigger = true;
 			}
+			*/
 		}
 	}
 }
