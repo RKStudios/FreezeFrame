@@ -85,6 +85,14 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		if (col.transform.tag == "Checkpoint" && col.transform.particleSystem.startColor == Color.red)
+		{
+			spawn = col.transform.position;
+		}
+	}
+
 	//stretching????
 	void Stretch()
 	{	//ambiguous error here
