@@ -35,6 +35,23 @@ public class PlayerJumpCollider : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay2D(Collider2D other)
+	{
+		if(groundTags.Contains(other.gameObject.tag))
+		{
+			if(!groundObjects.Contains(other.gameObject))
+			{
+				groundObjects.Add(other.gameObject);
+			}
+			player.SetCanJump(true);
+		}
+		
+		if(other.gameObject.tag == "PlayerHolder")
+		{
+			player.gameObject.transform.parent = other.gameObject.transform;
+		}
+	}
+
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if(groundTags.Contains(other.gameObject.tag))
