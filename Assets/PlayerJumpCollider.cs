@@ -22,7 +22,10 @@ public class PlayerJumpCollider : MonoBehaviour {
 	{
 		if(groundTags.Contains(other.gameObject.tag))
 		{
-			groundObjects.Add(other.gameObject);
+			if(!groundObjects.Contains(other.gameObject))
+			{
+				groundObjects.Add(other.gameObject);
+			}
 			player.SetCanJump(true);
 		}
 
@@ -37,13 +40,15 @@ public class PlayerJumpCollider : MonoBehaviour {
 		if(groundTags.Contains(other.gameObject.tag))
 		{
 			groundObjects.Remove(other.gameObject);
+			for(int i = 0; i < groundObjects.Count; ++i)
+			{
+				Debug.Log(groundObjects[i].gameObject.name);
+			}
 			if(groundObjects.Count == 0)
 			{
 				player.SetCanJump(false);
 			}
 		}
-
-		Debug.Log (other.gameObject.tag);
 
 		if(other.gameObject.tag == "PlayerHolder")
 		{
