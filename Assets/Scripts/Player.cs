@@ -86,11 +86,8 @@ public class Player : MonoBehaviour {
 			shouldJump = true;
 		}
 
-		if (transform.position.y < -50) {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
+		if (transform.position.y < -50) 
+		{
 			Die ();
 		}
 	}
