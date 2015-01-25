@@ -73,7 +73,7 @@ public class Lever : MonoBehaviour {
 	void Update(){
 
 		//Debug.Log (rotateLeft);
-		Debug.Log (rotateRight);
+		//Debug.Log (rotateRight);
 
 		if (rotateRight == true){
 			transform.Rotate(new Vector3(0,0,-15)  );
