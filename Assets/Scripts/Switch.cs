@@ -13,7 +13,8 @@ public class Switch : MonoBehaviour {
 		playerObjects = new List<GameObject>();
 		foreach(GameObject door in reverseDoors)
 		{
-			door.SetActive(false);
+			if(door != null)
+				door.SetActive(false);
 		}
 	}
 	
@@ -33,12 +34,14 @@ public class Switch : MonoBehaviour {
 			}
 			foreach(GameObject door in reverseDoors)
 			{
-				door.SetActive(true);
+				if(door != null)
+					door.SetActive(true);
 			}
 
 			foreach(GameObject door in doors)
 			{
-				door.SetActive(false);
+				if(door != null)
+					door.SetActive(false);
 			}
 		}
 	}
@@ -55,12 +58,14 @@ public class Switch : MonoBehaviour {
 		{
 			foreach(GameObject door in reverseDoors)
 			{
-				door.SetActive(false);
+				if(door != null)
+					door.SetActive(false);
 			}
 			
 			foreach(GameObject door in doors)
 			{
-				door.SetActive(true);
+				if(door != null)
+					door.SetActive(true);
 			}
 		}
 	}
